@@ -1,0 +1,175 @@
+/* Global Reset and Setup */
+:root {
+    --maroon-dark: #7b1c1c; /* A deep maroon/burgundy color */
+    --gold-light: #f5c441; /* For the link color */
+    --text-color: #ffffff; /* White text for the sidebar */
+    --input-bg: #ffffff;
+    --button-color: #f5c441;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif; /* Use a clean, simple font */
+}
+
+/* Main Container */
+.register-container {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    width: 100%;
+    overflow: hidden; /* Prevents scrolling */
+}
+
+/* Left Sidebar - Register Form */
+.register-sidebar {
+    width: 400px; /* Fixed width as seen in the screenshot */
+    min-width: 300px;
+    background-color: var(--maroon-dark);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.nbi-logo {
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.register-title {
+    font-size: 1.5em;
+    margin-bottom: 70px;
+    font-weight: normal;
+    text-align: center;
+    color: #f5c441;
+}
+
+/* Form Styling */
+.register-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-form label {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+     color: #f5c441;
+}
+
+.register-form input[type="text"],
+.register-form input[type="password"],
+.register-form input[type="email"],
+.register-form input[type="tel"] {
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* Added right padding for icon space */
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 3px;
+    background-color: var(--input-bg);
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.register-form .fa-solid {
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--gold-light);
+}
+
+.register-form .fa-solid:hover {
+    color: #fff;
+}
+
+
+.link-group {
+    margin-top: 5px;
+    margin-bottom: 25px;
+    text-align: left;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.link-group a {
+    color: var(--gold-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.link-group a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+
+.register-button {
+    background-color: var(--gold-light);
+    color: var(--maroon-dark);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    margin-bottom: 20px;
+}
+
+.register-button:hover {
+    background-color: #ffd700; /* Slightly brighter gold on hover */
+}
+
+/* Back Button Styles */
+.back-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.back-button .btn-secondary {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: transparent;
+    color: var(--gold-light);
+    border: 2px solid var(--gold-light);
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: all 0.2s;
+}
+
+.back-button .btn-secondary:hover {
+    background-color: var(--gold-light);
+    color: var(--maroon-dark);
+}
+
+/* Right Background Area */
+.background-area {
+    flex-grow: 1; /* Takes up the remaining space */
+    background-image: url('../images/nbi2.jpg'); /* Replace with your actual image path */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* Optional: Add a dark overlay to mimic the dimming/contrast effect */
+    position: relative;
+}
+
+.background-area::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(128, 0, 0, 0.3); /* Maroon overlay with low transparency */
+}

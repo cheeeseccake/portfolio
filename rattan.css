@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.project-view {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.project-view h2 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    z-index: 10;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.project-view iframe {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    display: block;
+}
+
+.btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}

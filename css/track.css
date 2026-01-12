@@ -1,0 +1,300 @@
+/* Global Reset and Setup */
+:root {
+    --maroon-dark: #7b1c1c; /* A deep maroon/burgundy color */
+    --gold-light: #f5c441; /* For the link color */
+    --text-color: #ffffff; /* White text for the sidebar */
+    --input-bg: #ffffff;
+    --button-color: #f5c441;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif; /* Use a clean, simple font */
+}
+
+/* Main Container */
+.track-container {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    width: 100%;
+    overflow: hidden; /* Prevents scrolling */
+}
+
+/* Left Sidebar - Track Form */
+.track-sidebar {
+    width: 400px; /* Fixed width as seen in the screenshot */
+    min-width: 300px;
+    background-color: var(--maroon-dark);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.nbi-logo {
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.track-title {
+    font-size: 1.5em;
+    margin-bottom: 70px;
+    font-weight: normal;
+    text-align: center;
+    color: #f5c441;
+}
+
+/* Form Styling */
+.track-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.track-form label {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+     color: #f5c441;
+}
+
+.track-form input[type="text"],
+.track-form input[type="password"],
+.track-form input[type="email"],
+.track-form input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 3px;
+    background-color: var(--input-bg);
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+.link-group {
+    margin-top: 5px;
+    margin-bottom: 25px;
+    text-align: left;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.link-group a {
+    color: var(--gold-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.link-group a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+
+.track-btn {
+    background-color: var(--gold-light);
+    color: var(--maroon-dark);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    margin-bottom: 20px;
+}
+
+.track-btn:hover {
+    background-color: #ffd700; /* Slightly brighter gold on hover */
+}
+
+/* Back Button Styles */
+.back-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.back-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: transparent;
+    color: var(--gold-light);
+    border: 2px solid var(--gold-light);
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: all 0.2s;
+}
+
+.back-link:hover {
+    background-color: var(--gold-light);
+    color: var(--maroon-dark);
+}
+
+/* Right Background Area */
+.background-area {
+    flex-grow: 1; /* Takes up the remaining space */
+    background-image: url('../images/nbi2.jpg'); /* Replace with your actual image path */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* Optional: Add a dark overlay to mimic the dimming/contrast effect */
+    position: relative;
+}
+
+.background-area::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(128, 0, 0, 0.3); /* Maroon overlay with low transparency */
+}
+
+/* Track Results Overlay */
+.track-results {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.track-results h3 {
+    color: var(--maroon-dark);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Result Items */
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-label {
+    font-weight: 600;
+    color: var(--maroon-dark);
+    font-size: 0.9em;
+}
+
+.result-value {
+    color: #333;
+    font-size: 0.9em;
+    text-align: right;
+    flex: 1;
+}
+
+/* Status Badge */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+}
+
+.status-badge.status-pending {
+    background-color: #fef3c7;
+    color: #f59e0b;
+}
+
+.status-badge.status-approved {
+    background-color: #d1fae5;
+    color: #10b981;
+}
+
+.status-badge.status-rejected {
+    background-color: #fee2e2;
+    color: #ef4444;
+}
+
+.status-badge.status-processing {
+    background-color: #dbeafe;
+    color: #3b82f6;
+}
+
+.status-badge.status-completed {
+    background-color: #d1fae5;
+    color: #10b981;
+}
+
+/* No Results */
+.no-results {
+    text-align: center;
+    padding: 20px;
+}
+
+.no-results h3 {
+    color: var(--maroon-dark);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.no-results p {
+    color: #666;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .track-container {
+        flex-direction: column;
+    }
+
+    .track-sidebar {
+        width: 100%;
+        min-height: 300px;
+        padding: 30px 20px;
+    }
+
+    .track-title {
+        font-size: 1.3em;
+        margin-bottom: 40px;
+    }
+
+    .track-form {
+        max-width: 300px;
+    }
+
+    .background-area {
+        display: none; /* Hide background on mobile */
+    }
+
+    .track-results {
+        position: static;
+        transform: none;
+        margin: 20px;
+        width: calc(100% - 40px);
+    }
+}
