@@ -1,0 +1,35 @@
+<?php
+
+class Header {
+
+    public function render() {
+
+        return "<header class='header'>
+
+    <img src='hearts.gif' alt='Heart Animation' class='heart-gif'>
+
+    <nav class='navbar'>
+
+        <ul class='nav-links'>
+
+            <li><a href='#home'>Home</a></li>
+
+            <li><a href='#about'>About</a></li>
+
+            <li><a href='#experience'>Experience</a></li>
+
+            <li><a href='#skills'>Skills</a></li>
+
+            <li><a href='#projects'>Projects</a></li>
+
+            <li><a href='#contact'>Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>";
+
+    }
+
+}

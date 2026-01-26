@@ -8,7 +8,8 @@ const SELECTORS = {
   PROFILE_IMAGE: '.profile-image',
   ANIMATED_ELEMENTS: '.text-content, .profile-section',
   MAIN_TITLE: '.main-title',
-  ABOUT_SECTION: '.about-section'
+  ABOUT_SECTION: '.about-section',
+  ROLE: '#role'
 };
 
 const STRINGS = {
@@ -59,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const animatedElements = document.querySelectorAll(SELECTORS.ANIMATED_ELEMENTS);
   const mainTitle = document.querySelector(SELECTORS.MAIN_TITLE);
   const aboutSection = document.querySelector(SELECTORS.ABOUT_SECTION);
+  const role = document.querySelector(SELECTORS.ROLE);
 
   // Scroll button functionality removed
 
@@ -119,6 +121,79 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }, 16); // ~60fps
 
+  // Experience tags interaction
+  const tagButtons = document.querySelectorAll('.tag-btn');
+  const stackedCards = document.querySelectorAll('.stacked-card');
+
+  tagButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const cardIndex = button.getAttribute('data-card');
+
+      // Remove active from all tags
+      tagButtons.forEach(btn => removeClass(btn, 'active'));
+      // Add active to clicked
+      addClass(button, 'active');
+
+      // Fold all cards
+      stackedCards.forEach(card => {
+        addClass(card, 'folded');
+        removeClass(card, 'unfolded');
+        card.style.display = 'none';
+      });
+      
+      function filterCards(filter, btn) {
+          const filterButtons = document.querySelectorAll('.filter-btn');
+          const cards = document.querySelectorAll('.experience-card');
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          cards.forEach(card => {
+              if (filter === 'all' || card.dataset.type === filter) {
+                  card.style.display = 'block';
+              } else {
+                  card.style.display = 'none';
+              }
+          });
+          stackCards();
+      }
+      
+      function toggleCard(card) {
+          card.classList.toggle('expanded');
+      }
+      
+      function stackCards() {
+          const visibleCards = document.querySelectorAll('.stacked-card[style*="display: block"]');
+          visibleCards.forEach((card, index) => {
+              const offsetY = index * 15;
+              const rotate = index * 3;
+              const zIndex = 10 - index;
+              card.style.transform = `translateX(-50%) translateY(${offsetY}px) rotate(${rotate}deg)`;
+              card.style.zIndex = zIndex;
+          });
+      }
+      
+      stackCards();
+
+      // Unfold selected card
+      if (stackedCards[cardIndex]) {
+        setTimeout(() => {
+          removeClass(stackedCards[cardIndex], 'folded');
+          addClass(stackedCards[cardIndex], 'unfolded');
+          stackedCards[cardIndex].style.display = 'block';
+        }, 200);
+      }
+    });
+  });
+
+  // Initially hide all cards and unfold the card for 2017 (card 3)
+  stackedCards.forEach(card => {
+    card.style.display = 'none';
+  });
+  if (stackedCards[3]) {
+    removeClass(stackedCards[3], 'folded');
+    addClass(stackedCards[3], 'unfolded');
+    stackedCards[3].style.display = 'block';
+  }
+
   // Initial setup for animation
   animatedElements.forEach(element => {
     element.style.opacity = '0';
@@ -158,6 +233,15 @@ document.addEventListener('DOMContentLoaded', function() {
       typeWriter(mainTitle, originalText, 80);
     }
   }, 500);
+
+  // Apply typing effect for role after main title
+  setTimeout(() => {
+    if (role) {
+      role.style.opacity = '1';
+      const originalText = role.textContent;
+      typeWriter(role, originalText, 60);
+    }
+  }, 1500);
 
 
   // Scroll button
