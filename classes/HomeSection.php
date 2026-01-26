@@ -12,7 +12,7 @@ class HomeSection {
 
         <a href='https://www.linkedin.com/in/maria-cheska-j-213805202/'><i class='fab fa-linkedin-in'></i></a>
 
-        <a href='https://github.com/cheesecake18'><i class='fab fa-github'></i></a>
+        <a href='https://github.com/cheeeseccake'><i class='fab fa-github'></i></a>
 
     </div>
 
