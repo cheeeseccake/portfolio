@@ -2348,3 +2348,58 @@ footer a:hover { color: #fff; }
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Existing portfolio-specific card and section names */
+.experience-section, .projects-section, .skills-section, .contact-section {
+  position: relative;
+  isolation: isolate;
+}
+.experience-section, .projects-section, .skills-section {
+  background: #f4f6ef;
+}
+.experience-grid, .contact-grid {
+  gap: clamp(16px, 2.4vw, 28px);
+}
+.experience-card, .stacked-card, .card, .skill-card, .contact-item, .contact-form {
+  background-color: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 8px 28px rgba(23,61,43,.045);
+  transition: transform .3s cubic-bezier(.2,.75,.25,1), box-shadow .3s ease, border-color .3s ease;
+}
+.experience-card:hover, .stacked-card:hover, .card:hover, .skill-card:hover, .contact-item:hover, .contact-form:hover {
+  transform: translateY(-5px);
+  border-color: rgba(95,143,104,.45);
+  box-shadow: var(--shadow-hover);
+}
+.experience-tags span, .experience-tags a {
+  background: var(--sage-100);
+  color: var(--forest-700);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.contact-form input, .contact-form textarea, .contact-form select {
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fbfcf9;
+  color: var(--ink);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+  border-color: var(--sage-500);
+  box-shadow: 0 0 0 4px rgba(127,168,137,.16);
+  outline: none;
+}
+@keyframes portfolio-reveal {
+  from { opacity: .15; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@supports (animation-timeline: view()) {
+  .experience-card, .stacked-card, .card, .skill-card, .contact-item {
+    animation: portfolio-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 45%;
+  }
+}
